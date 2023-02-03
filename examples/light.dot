@@ -1,0 +1,14 @@
+digraph G {
+        loc0 [init=false, match=true]
+        loc1 [init=false, match=true]
+        loc2 [init=true, match=true]
+        loc3 [init=false, match=true]
+        loc4 [init=false, match=true]
+        loc0->loc2 [label="d", reset="{x0 := 0}"]
+        loc1->loc2 [label="a", guard="{x0 < 5}", reset="{x0 := 0}"]
+        loc1->loc4 [label="a", guard="{x0 >= 5}"]
+        loc1->loc3 [label="e", guard="{x0 >= 10}", reset="{x0 := 0}"]
+        loc2->loc1 [label="b", reset="{x0 := 0}"]
+        loc3->loc0 [label="a", reset="{x0 := 0}"]
+        loc4->loc2 [label="c"]
+}

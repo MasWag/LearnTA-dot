@@ -1,0 +1,71 @@
+name:                LearnTA-dot
+version:             0.1.0.0
+github:              "MasWag/LearnTA-dot"
+license:             GPL-3.0
+author:              "Masaki Waga"
+maintainer:          "masakiwaga@gmail.com"
+copyright:           "2023 Masaki Waga"
+
+extra-source-files:
+- README.md
+- CHANGELOG.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description: Tools for the dot files used in LearnTA. Please also see the README on GitHub at <https://github.com/MasWag/LearnTA-dot>
+
+dependencies:
+- base >= 4.7 && < 5
+- graphviz >= 2999.20.0.3
+- text
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+
+library:
+  source-dirs: src
+
+executables:
+  LearnTA2dot:
+    main:                Main.hs
+    source-dirs:         LearnTA2dot
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - LearnTA-dot
+  dot2tikz:
+    main:                Main.hs
+    source-dirs:         dot2tikz
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - LearnTA-dot
+
+tests:
+  LearnTA-dot-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - LearnTA-dot
+    - hspec
